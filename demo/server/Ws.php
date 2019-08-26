@@ -74,7 +74,7 @@ class Ws
      * @Date: 2019/8/26 0026
      * @return string
      */
-    public function onTask($server,$taskId,$workId,$data)
+    public function onTask(Swoole\Server $server,$taskId,$workId,$data)
     {
         print_r($data);
         //耗时场景10s
