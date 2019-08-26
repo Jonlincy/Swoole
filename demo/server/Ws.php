@@ -17,7 +17,7 @@ class Ws
 
     public function __construct()
     {
-        $this->ws = swoole_websocket_server(self::HOST,self::PORT);
+        $this->ws = new swoole_websocket_server(self::HOST,self::PORT);
         $this->ws->on("open",[$this,"onOpen"]);
         $this->ws->on("message",[$this,"onMessage"]);
         $this->ws->on("close",[$this,"onClose"]);
