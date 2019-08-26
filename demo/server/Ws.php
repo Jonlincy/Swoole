@@ -78,8 +78,8 @@ class Ws
     {
         print_r($data);
         //耗时场景10s
-        //sleep(10);
-        //return "on task finish"; // 告诉Worker进程(返回给OnFinish)
+        sleep(10);
+        return "on task finish"; // 告诉Worker进程(返回给OnFinish)
 
     }
 
