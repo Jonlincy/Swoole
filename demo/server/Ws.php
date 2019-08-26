@@ -84,13 +84,13 @@ class Ws
     }
 
     /**
-     * @param $server
+     * @param $serv
      * @param $taskId
      * @param $data
      * @author hjl
      * @Date: 2019/8/26 0026
      */
-    public function onFinish($server,$taskId,$data)
+    public function onFinish($serv,$taskId,$data)
     {
         echo "taskId is:{$taskId}\n";
         echo "finish success data is:{$data}";
