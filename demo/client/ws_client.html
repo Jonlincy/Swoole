@@ -12,12 +12,13 @@
     var websocket = new WebSocket(url);
     //实例化对象的onOpen属性
     websocket.onopen = function (evt) {
+        websocket.send('Hello hjl');
         console.log("onOpen:"+evt);
     }
 
     //实例化对象的onMessage对象
     websocket.onmessage = function (msg) {
-        console.log("msg:"+msg);
+        console.log("msg:"+msg.data);
     }
 
     //实例化对象的OnClose对象
@@ -27,7 +28,7 @@
 
     //错误事件
     websocket.onerror = function (err) {
-        console.log("error：" + err);
+        console.log("error：" + err.data);
     }
 </script>
 </body>
