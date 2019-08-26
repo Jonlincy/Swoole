@@ -56,6 +56,7 @@ class Ws
     {
         echo "Server push message:{$frame->data}\n";
         //任务测试，假设有10秒等待时间
+        //todo 10s
         $data = [
             'task' => 1,
             'fd' => $frame->fd
