@@ -25,9 +25,9 @@ class Ws
             'task_worker_number' => 2
         ]);
         $this->ws->on("open",[$this,"onOpen"]);
+        $this->ws->on("message",[$this,"onMessage"]);
         $this->ws->on("task",[$this,"onTask"]);
         $this->ws->on("finish",[$this,"onFinish"]);
-        $this->ws->on("message",[$this,"onMessage"]);
         $this->ws->on("close",[$this,"onClose"]);
 
         $this->ws->start();
@@ -84,7 +84,7 @@ class Ws
     }
 
     /**
-     * @param $serv
+     * @param $server
      * @param $taskId
      * @param $data
      * @author hjl
