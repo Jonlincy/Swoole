@@ -20,6 +20,8 @@ class Ws
         $this->ws = new swoole_websocket_server(self::HOST,self::PORT);
         $this->ws->on("open",[$this,"onOpen"]);
         $this->ws->on("message",[$this,"onMessage"]);
+        $this->ws->on("task",[$this,"onTask"]);
+        $this->ws->on("finish",[$this,"onFinish"]);
         $this->ws->on("close",[$this,"onClose"]);
 
         $this->ws->start();
@@ -47,8 +49,47 @@ class Ws
     public function onMessage($ws,$frame)
     {
         echo "Server push message:{$frame->data}\n";
+        //任务测试，假设有10秒等待时间
+        $data = [
+            'task' => 1,
+            'fd' => $frame->fd
+        ];
+
+        $ws->task($data);
         $ws->push($frame->fd,"Server push:" . date('Y-m-d H:i:s'));
     }
+
+    /**
+     * @param $server
+     * @param $taskId
+     * @param $workId
+     * @param $data
+     * @author hjl
+     * @Date: 2019/8/26 0026
+     * @return string
+     */
+    public function onTask($server,$taskId,$workId,$data)
+    {
+        print_r($data);
+        //耗时场景10s
+        sleep(10);
+        return "on task finish"; // 告诉Worker进程(返回给OnFinish)
+
+    }
+
+    /**
+     * @param $server
+     * @param $taskId
+     * @param $data
+     * @author hjl
+     * @Date: 2019/8/26 0026
+     */
+    public function onFinish($server,$taskId,$data)
+    {
+        echo "taskId is:{$taskId}\n";
+        echo "finish success data is:{$data}";
+    }
+
 
     /**
      * 关闭连接
