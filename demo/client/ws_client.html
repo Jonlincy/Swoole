@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ws 测试</title>
+</head>
+<body>
+<h1>WebSocket测试</h1>
+<script>
+    var url = 'ws://192.168.43.225:8812';
+
+    var websocket = new WebSocket(url);
+    //实例化对象的onOpen属性
+    websocket.onopen = function (evt) {
+        console.log("onOpen:"+evt);
+    }
+
+    //实例化对象的onMessage对象
+    websocket.onmessage = function (msg) {
+        console.log("msg:"+msg);
+    }
+
+    //实例化对象的OnClose对象
+    websocket.onclose = function (cls) {
+        console.log("closed: " + cls);
+    }
+
+    //错误事件
+    websocket.onerror = function (err) {
+        console.log("error：" + err);
+    }
+</script>
+</body>
+</html>

@@ -6,7 +6,7 @@
  * Date: 2019/8/26 0026
  * Time: 下午 16:09
  */
-$server = new swoole_websocket_server('0.0.0.0',9501);
+$server = new swoole_websocket_server('0.0.0.0',8812);
 
 //方式一
 //$server->on('open',function (swoole_websocket_server $server,$request){
