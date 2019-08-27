@@ -75,12 +75,13 @@ class Ws
      * @Date: 2019/8/26 0026
      * @return string
      */
-    public function onTask(Swoole\Server $server,$taskId,$workId,$data)
+    public function onTask($server,$taskId,$workId,$data)
     {
         print_r($data);
         //耗时场景10s
         sleep(10);
-        return "on task finish"; // 告诉Worker进程(返回给OnFinish)
+        $server->onFinsh($server,$taskId,$data);
+        //return "on task finish"; // 告诉Worker进程(返回给OnFinish)
 
     }
 
