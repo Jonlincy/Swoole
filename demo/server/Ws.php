@@ -62,7 +62,7 @@ class Ws
             'fd' => $frame->fd
         ];
 
-        $ws->task($data);
+        $ws->task($data,0);
         $ws->push($frame->fd,"Server push:" . date('Y-m-d H:i:s'));
     }
 
@@ -75,7 +75,7 @@ class Ws
      * @Date: 2019/8/26 0026
      * @return string
      */
-    public function onTask($server,$taskId,$workId,$data)
+    public function onTask(Swoole\Server $server,$taskId,$workId,$data)
     {
         print_r($data);
         //耗时场景10s
